@@ -1,1 +1,108 @@
-<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Number Prediction and Dream Interpretation</title>\n    <link rel="stylesheet" href="styles.css">\n</head>\n<body>\n    <header>\n        <h1>Number Prediction and Dream Interpretation</h1>\n    </header>\n    <main>\n        <section id="number-prediction">\n            <h2>Number Prediction</h2>\n            <form id="prediction-form">\n                <label for="user-number">Enter a number:</label>\n                <input type="number" id="user-number" name="user-number" required>\n                <button type="submit">Predict</button>\n            </form>\n            <div id="prediction-result"></div>\n        </section>\n        <section id="dream-interpretation">\n            <h2>Dream Interpretation</h2>\n            <form id="dream-form">\n                <label for="dream-description">Describe your dream:</label>\n                <textarea id="dream-description" name="dream-description" required></textarea>\n                <button type="submit">Interpret</button>\n            </form>\n            <div id="interpretation-result"></div>\n        </section>\n    </main>\n    <footer>\n        <p>&copy; 2026 Number Prediction and Dream Interpretation</p>\n    </footer>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Prediction and Dream Interpretation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(180deg, #6a5acd, #b0c4de);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(to right, #8a2be2, #4b0082);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        nav {
+            margin: 20px 0;
+        }
+        nav button {
+            margin: 0 10px;
+            padding: 10px 15px;
+            border: none;
+            background: #fff;
+            color: #8a2be2;
+            cursor: pointer;
+        }
+        .tab {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        form {
+            margin: 0 auto;
+            width: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #8a2be2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Number Prediction and Dream Interpretation</h1>
+    </header>
+    <nav>
+        <button onclick="showTab('prediction')">Prediksi Angka</button>
+        <button onclick="showTab('interpretation')">Tafsir Mimpi</button>
+        <button onclick="showTab('about')">Tentang</button>
+    </nav>
+    <div>
+        <div id="prediction" class="tab active">
+            <h2>Prediksi Angka</h2>
+            <form id="prediction-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required><br><br>
+                <label for="date">Date:</label>
+                <input type="date" id="date" required><br><br>
+                <input type="submit" value="Predict Number">
+            </form>
+            <div id="prediction-result"></div>
+        </div>
+        <div id="interpretation" class="tab">
+            <h2>Tafsir Mimpi</h2>
+            <form id="interpretation-form">
+                <label for="dream">Describe your dream:</label><br>
+                <textarea id="dream" rows="4" required></textarea><br><br>
+                <input type="submit" value="Interpret Dream">
+            </form>
+            <div id="interpretation-result"></div>
+        </div>
+        <div id="about" class="tab">
+            <h2>Tentang</h2>
+            <p>This site provides a fun way to predict numbers and interpret dreams. Enjoy!</p>
+        </div>
+    </div>
+    <script>
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        document.getElementById('prediction-form').onsubmit = function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const date = document.getElementById('date').value;
+            const prediction = Math.floor(Math.random() * 100);
+            document.getElementById('prediction-result').innerText = `Hello ${name}, your predicted number is ${prediction}! Date: ${date}`;
+        };
+
+        document.getElementById('interpretation-form').onsubmit = function(event) {
+            event.preventDefault();
+            const dream = document.getElementById('dream').value;
+            const interpretation = `Your dream about '${dream}' suggests positive prospects!`;
+            document.getElementById('interpretation-result').innerText = interpretation;
+        };
+    </script>
+</body>
+</html>
