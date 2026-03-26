@@ -1,108 +1,147 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Number Prediction and Dream Interpretation</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(180deg, #6a5acd, #b0c4de);
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background: linear-gradient(to right, #8a2be2, #4b0082);
-            padding: 20px;
-            text-align: center;
-            color: white;
-        }
-        nav {
-            margin: 20px 0;
-        }
-        nav button {
-            margin: 0 10px;
-            padding: 10px 15px;
-            border: none;
-            background: #fff;
-            color: #8a2be2;
-            cursor: pointer;
-        }
-        .tab {
-            display: none;
-        }
-        .active {
-            display: block;
-        }
-        form {
-            margin: 0 auto;
-            width: 300px;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        h2 {
-            color: #8a2be2;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulator Jarak & Harga</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #6a5acd, #7b68ee);
+}
+
+.container {
+  max-width: 400px;
+  margin: auto;
+  padding: 15px;
+}
+
+.header {
+  background: linear-gradient(135deg, #00c853, #009688);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.card {
+  background: white;
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #5c6bc0;
+  margin-bottom: 10px;
+}
+
+.info {
+  background: #fff3cd;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.btn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6a5acd, #7b1fa2);
+}
+
+.btn-outline {
+  background: white;
+  color: #5c6bc0;
+  border: 2px solid #5c6bc0;
+}
+
+.result {
+  margin-top: 10px;
+  padding: 10px;
+  background: #e8f5e9;
+  border-radius: 10px;
+}
+</style>
 </head>
+
 <body>
-    <header>
-        <h1>Number Prediction and Dream Interpretation</h1>
-    </header>
-    <nav>
-        <button onclick="showTab('prediction')">Prediksi Angka</button>
-        <button onclick="showTab('interpretation')">Tafsir Mimpi</button>
-        <button onclick="showTab('about')">Tentang</button>
-    </nav>
-    <div>
-        <div id="prediction" class="tab active">
-            <h2>Prediksi Angka</h2>
-            <form id="prediction-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" required><br><br>
-                <label for="date">Date:</label>
-                <input type="date" id="date" required><br><br>
-                <input type="submit" value="Predict Number">
-            </form>
-            <div id="prediction-result"></div>
-        </div>
-        <div id="interpretation" class="tab">
-            <h2>Tafsir Mimpi</h2>
-            <form id="interpretation-form">
-                <label for="dream">Describe your dream:</label><br>
-                <textarea id="dream" rows="4" required></textarea><br><br>
-                <input type="submit" value="Interpret Dream">
-            </form>
-            <div id="interpretation-result"></div>
-        </div>
-        <div id="about" class="tab">
-            <h2>Tentang</h2>
-            <p>This site provides a fun way to predict numbers and interpret dreams. Enjoy!</p>
-        </div>
+
+<div class="container">
+
+  <div class="header">
+    <h2>👦 Kalkulator Jarak & Harga</h2>
+    <p>Layanan Pijat Seluruh Badan</p>
+  </div>
+
+  <div class="card">
+    <div class="title">📍 Hitung Jarak & Harga</div>
+
+    <div class="info">
+      💡 Masukkan jarak dari lokasi kami untuk melihat harga layanan
     </div>
-    <script>
-        function showTab(tabName) {
-            const tabs = document.querySelectorAll('.tab');
-            tabs.forEach(tab => tab.classList.remove('active'));
-            document.getElementById(tabName).classList.add('active');
-        }
 
-        document.getElementById('prediction-form').onsubmit = function(event) {
-            event.preventDefault();
-            const name = document.getElementById('name').value;
-            const date = document.getElementById('date').value;
-            const prediction = Math.floor(Math.random() * 100);
-            document.getElementById('prediction-result').innerText = `Hello ${name}, your predicted number is ${prediction}! Date: ${date}`;
-        };
+    <label>Jarak dari Lokasi Kami (km)</label>
+    <input type="number" id="jarak" placeholder="Contoh: 2">
 
-        document.getElementById('interpretation-form').onsubmit = function(event) {
-            event.preventDefault();
-            const dream = document.getElementById('dream').value;
-            const interpretation = `Your dream about '${dream}' suggests positive prospects!`;
-            document.getElementById('interpretation-result').innerText = interpretation;
-        };
-    </script>
+    <button class="btn btn-primary" onclick="hitung()">🔍 Hitung Jarak & Harga</button>
+    <button class="btn btn-outline" onclick="tabel()">📋 Lihat Tabel Tarif</button>
+
+    <div id="hasil" class="result"></div>
+  </div>
+
+</div>
+
+<script>
+function hitung() {
+  let jarak = document.getElementById("jarak").value;
+  
+  if (!jarak) {
+    alert("Masukkan jarak dulu!");
+    return;
+  }
+
+  let harga = 0;
+
+  if (jarak <= 2) harga = 50000;
+  else if (jarak <= 5) harga = 75000;
+  else if (jarak <= 10) harga = 100000;
+  else harga = 150000;
+
+  document.getElementById("hasil").innerHTML =
+    "💰 Harga: Rp " + harga.toLocaleString();
+}
+
+function tabel() {
+  alert(
+    "📋 Tabel Tarif:\n\n" +
+    "0 - 2 km : 50.000\n" +
+    "3 - 5 km : 75.000\n" +
+    "6 - 10 km : 100.000\n" +
+    ">10 km : 150.000"
+  );
+}
+</script>
+
 </body>
 </html>
